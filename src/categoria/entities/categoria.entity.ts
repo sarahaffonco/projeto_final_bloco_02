@@ -2,7 +2,7 @@ import { IsNotEmpty } from 'class-validator';
 import {
   Column,
   Entity,
-  ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -24,8 +24,6 @@ export class Categoria {
   @UpdateDateColumn()
   data: Date;
 
-  @ManyToOne(() => Produtos, (produtos) => produtos.categoria, {
-    onDelete: 'CASCADE',
-  })
-  Produtos: Produtos;
+  @OneToMany(() => Produtos, (produtos) => produtos.categoria)
+  Produtos: Produtos[];
 }

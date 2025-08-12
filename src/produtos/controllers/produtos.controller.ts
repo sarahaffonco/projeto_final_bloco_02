@@ -35,7 +35,7 @@ export class ProdutosController {
     return this.produtosService.findByNome(nome);
   }
 
-  @Post()
+  @Post('/create')
   @HttpCode(HttpStatus.CREATED)
   create(@Body() produto: Produtos): Promise<Produtos> {
     return this.produtosService.create(produto);

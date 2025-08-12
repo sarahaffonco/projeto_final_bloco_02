@@ -35,10 +35,11 @@ export class ProdutosService {
   }
   async findById(id: number): Promise<Produtos> {
     const produto = await this.produtosRepository.findOne({
-      relations: {
-        categoria: true,
+      where: {
+        id,
       },
     });
+
     if (!produto) {
       throw new HttpException(
         `Produto com id ${id} não encontrado`,
